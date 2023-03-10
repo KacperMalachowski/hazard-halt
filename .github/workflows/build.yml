@@ -39,8 +39,8 @@ jobs:
         with:
           context: .
           tags: |
-            $IMAGE_NAME_WITH_REGISTRY:latest
-            $FULL_IMAGE_NAME
+            ${{ env.IMAGE_NAME_WITH_REGISTRY }}:latest
+            ${{ env.FULL_IMAGE_NAME }}
           push: true
 
       - name: Deploy to CapRover
