@@ -39,8 +39,8 @@ jobs:
         with:
           context: .
           tags: |
-            ghcr.io/${{ github.repository }}/malicious-pages-bot:latest
-            ghcr.io/${{ github.repository }}/malicious-pages-bot:$("${{ github.sha }}".SubString(0, 8))
+            $IMAGE_NAME_WITH_REGISTRY:latest
+            $FULL_IMAGE_NAME
           push: true
 
       - name: Deploy to CapRover
