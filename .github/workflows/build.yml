@@ -8,7 +8,7 @@ on:
       - main
 
 env:
-    IMAGE_NAME: ${{ github.repository }}/staging
+    IMAGE_NAME: kacpermalachowski/hazard-halt/prod
     DOCKERFILE: Dockerfile
     CAPROVER_APP: hazard-halt-dc-bot
     DOCKER_REGISTRY: ghcr.io
