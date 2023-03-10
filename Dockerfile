@@ -1,19 +1,20 @@
-FROM golang:1.20-bullseye AS builder
-
-COPY go.mod .
-COPY go.sum .
+FROM golang:1.20-alpine AS builder
 
 WORKDIR /app
 
+COPY go.mod ./
+
 RUN go mod download
 
-COPY . .
+COPY *.go ./
 
-RUN go build -o /bin/app
+RUN go build -o /go/bin/hazard-halt
 
-FROM debian:bullseye-slim
+FROM scratch
 
-COPY --from=builder /bin/app /bin/app
-COPY --from=builder /app/domains.json /bin/app/domains.json
+WORKDIR /
 
-ENTRYPOINT ["/bin/app"]
+COPY domains.json ./
+COPY --from=builder /go/bin/hazard-halt .
+
+ENTRYPOINT ["/hazard-halt"]
